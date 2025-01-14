@@ -183,13 +183,13 @@ void dlio::OdomNode::getParams() {
   dlio::declare_param(this, "version", this->version_, "0.0.0");
 
   // Frames
-  dlio::declare_param(this, "frames/odom", this->odom_frame, "odom");
+  dlio::declare_param(this, "frames/odom", this->odom_frame, "init_pose");
   dlio::declare_param(this, "frames/baselink", this->baselink_frame, "base_link");
   dlio::declare_param(this, "frames/lidar", this->lidar_frame, "lidar");
   dlio::declare_param(this, "frames/imu", this->imu_frame, "imu");
 
   // Namespace the frames
-  // this->odom_frame = std::string(this->get_namespace()) + "/" + std::string(this->odom_frame);
+  this->odom_frame = std::string(this->get_namespace()) + "/" + std::string(this->odom_frame);
   this->baselink_frame = std::string(this->get_namespace()) + "/" + std::string(this->baselink_frame);
   this->lidar_frame = std::string(this->get_namespace()) + "/" + std::string(this->lidar_frame);
   this->imu_frame = std::string(this->get_namespace()) + "/" + std::string(this->imu_frame);
